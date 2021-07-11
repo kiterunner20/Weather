@@ -1,4 +1,8 @@
 package com.example.weather
 
-class WeatherRepository {
+import javax.inject.Inject
+
+class WeatherRepository @Inject constructor(private val remoteServer: WeatherRemoteServer) {
+
+
 }

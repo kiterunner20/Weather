@@ -3,7 +3,9 @@ package com.example.weather
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.weather.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -14,9 +16,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportFragmentManager.beginTransaction()
-                .add(R.id.container, WeatherFragment.getFragmentInstance())
-                .addToBackStack("weather_fragment")
-                .commit()
+            .add(R.id.container, WeatherFragment.getFragmentInstance())
+            .addToBackStack("weather_fragment")
+            .commit()
 
 
     }
