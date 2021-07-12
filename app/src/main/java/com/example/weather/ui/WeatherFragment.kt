@@ -2,14 +2,15 @@ package com.example.weather.ui
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.example.weather.base.BaseFragment
 import com.example.weather.databinding.FragmentWeatherDataBinding
 import com.example.weather.utility.Constants.REQUEST_CODE_LOCATION_PERMISSION
@@ -71,7 +72,18 @@ class WeatherFragment : BaseFragment(), EasyPermissions.PermissionCallbacks {
                 WeatherDataState.FAILED -> showError(it.error.toString())
 
                 WeatherDataState.SUCCESS -> {
-                    Log.v(WeatherFragment::class.java.simpleName, it.data?.body().toString())
+                    val weatherData = it.data?.body()
+                    binding.tvTemparature.text = "${weatherData?.current?.temperature} \u2103"
+                    binding.tvHumidityData.text = weatherData?.current?.humidity.toString()
+                    binding.tvWindData.text = "${weatherData?.current?.windSpeed.toString()} Km/h"
+                    binding.tvWeatherStatus.text =
+                        weatherData?.current?.weatherDescriptions?.get(0).toString()
+
+                    Glide.with(context as Context)
+                        .load(weatherData?.current?.weatherIcons?.get(0))
+                        .override(300, 200)
+                        .into(binding.imWeatherIcons);
+
                 }
             }
         })
