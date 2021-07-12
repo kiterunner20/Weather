@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Weather</string>
-    <string name="dummy_location">Bangalore</string>
     <string name="wind">Wind</string>
     <string name="humidity">Humidity</string>
+    <string name="switch_theme">Switch theme</string>
+    <string name="change_language">Change language</string>
 </resources>

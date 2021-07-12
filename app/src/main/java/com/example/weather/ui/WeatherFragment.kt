@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.weather.base.BaseFragment
@@ -87,6 +88,10 @@ class WeatherFragment : BaseFragment(), EasyPermissions.PermissionCallbacks {
                 }
             }
         })
+
+        binding.themeSwitch.setOnClickListener {
+            switchTheme()
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -108,6 +113,17 @@ class WeatherFragment : BaseFragment(), EasyPermissions.PermissionCallbacks {
     private fun setCityAndFetchWeather(city: String) {
         binding.tvCurrentLocation.text = city
         weatherViewModel.fetchWeatherData(city)
+    }
+
+    fun switchTheme() {
+        if (AppCompatDelegate.getDefaultNightMode() ==
+            AppCompatDelegate.MODE_NIGHT_YES
+        ) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+
     }
 
     private fun showProgress() {

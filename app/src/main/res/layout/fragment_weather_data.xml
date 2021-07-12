@@ -141,5 +141,35 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/theme_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/medium"
+        android:letterSpacing=".1"
+        android:padding="@dimen/medium"
+        android:text="@string/switch_theme"
+        android:textColor="@color/black"
+        android:textSize="@dimen/medium_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/multilingual_switch"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/multilingual_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/medium"
+        android:letterSpacing=".1"
+        android:padding="@dimen/medium"
+        android:text="@string/change_language"
+        android:textColor="@color/black"
+        android:textSize="@dimen/medium_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/theme_switch" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

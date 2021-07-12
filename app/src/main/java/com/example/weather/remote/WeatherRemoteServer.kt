@@ -9,7 +9,7 @@ class WeatherRemoteServer @Inject constructor(private val weatherService: Weathe
 
 
     suspend fun getWeatherData(cityName: String): Response<WeatherResponse> {
-        return weatherService.getCurrentWeather(API_KEY,cityName)
+        return weatherService.getCurrentWeather(API_KEY, cityName)
     }
 
 }
