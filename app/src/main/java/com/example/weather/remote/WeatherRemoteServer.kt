@@ -1,4 +1,4 @@
-package com.example.weather
+package com.example.weather.remote
 
 import javax.inject.Inject
 

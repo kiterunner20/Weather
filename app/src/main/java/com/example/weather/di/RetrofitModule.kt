@@ -1,8 +1,8 @@
 package com.example.weather.di
 
-import com.example.weather.Constants
-import com.example.weather.WeatherRemoteServer
-import com.example.weather.WeatherService
+import com.example.weather.utility.Constants
+import com.example.weather.remote.WeatherRemoteServer
+import com.example.weather.remote.WeatherService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

@@ -1,7 +1,7 @@
 package com.example.weather.di
 
-import com.example.weather.WeatherRemoteServer
-import com.example.weather.WeatherRepository
+import com.example.weather.remote.WeatherRemoteServer
+import com.example.weather.repository.WeatherRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,7 +1,8 @@
-package com.example.weather
+package com.example.weather.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.weather.R
 import com.example.weather.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
