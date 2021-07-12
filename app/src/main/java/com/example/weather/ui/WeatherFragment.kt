@@ -5,15 +5,17 @@ import android.annotation.SuppressLint
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.weather.vm.WeatherViewModel
 import com.example.weather.base.BaseFragment
-import com.example.weather.utility.Constants.REQUEST_CODE_LOCATION_PERMISSION
 import com.example.weather.databinding.FragmentWeatherDataBinding
+import com.example.weather.utility.Constants.REQUEST_CODE_LOCATION_PERMISSION
 import com.example.weather.utility.LocationUtility
+import com.example.weather.vm.WeatherViewModel
+import com.example.weather.vm.viewstate.WeatherDataState
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
@@ -63,7 +65,16 @@ class WeatherFragment : BaseFragment(), EasyPermissions.PermissionCallbacks {
 
 
     override fun onReady() {
+        weatherViewModel.getWeatherData().observe(this, {
+            when (it) {
+                WeatherDataState.PROGRESS -> showProgress()
+                WeatherDataState.FAILED -> showError(it.error.toString())
 
+                WeatherDataState.SUCCESS -> {
+                    Log.v(WeatherFragment::class.java.simpleName, it.data?.body().toString())
+                }
+            }
+        })
     }
 
     @SuppressLint("MissingPermission")
@@ -84,8 +95,14 @@ class WeatherFragment : BaseFragment(), EasyPermissions.PermissionCallbacks {
 
     private fun setCityAndFetchWeather(city: String) {
         binding.tvCurrentLocation.text = city
+        weatherViewModel.fetchWeatherData(city)
     }
 
+    private fun showProgress() {
+
+    }
+
+    private fun showError(error: String) {}
 
     private fun findCityMapped(location: Location): String {
         val addresses = try {
