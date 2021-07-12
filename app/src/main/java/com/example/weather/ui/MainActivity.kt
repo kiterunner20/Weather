@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction()
             .add(R.id.container, WeatherFragment.getFragmentInstance())
-            .addToBackStack("weather_fragment")
             .commit()
 
 
