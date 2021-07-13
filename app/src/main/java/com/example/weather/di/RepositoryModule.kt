@@ -8,6 +8,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
+/**
+ * Providing the repository,and scope will be singleton .
+ * Will be valid from app start to end
+ */
+
 @Module
 @InstallIn(ApplicationComponent::class)
 object RepositoryModule {

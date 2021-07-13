@@ -37,6 +37,8 @@ class WeatherFragment : BaseFragment(), EasyPermissions.PermissionCallbacks {
     private val weatherViewModel: WeatherViewModel by viewModels()
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    private var selectedLanguage = ""
+
 
     companion object {
 
@@ -83,15 +85,33 @@ class WeatherFragment : BaseFragment(), EasyPermissions.PermissionCallbacks {
                     Glide.with(context as Context)
                         .load(weatherData?.current?.weatherIcons?.get(0))
                         .override(300, 200)
+                        .circleCrop()
                         .into(binding.imWeatherIcons);
 
                 }
             }
         })
 
+
         binding.themeSwitch.setOnClickListener {
+            when (selectedLanguage) {
+                "" -> {
+                    selectedLanguage = "hi"
+                    switchLanguage(selectedLanguage)
+                }
+                "hi" -> {
+                    selectedLanguage = "en"
+                    switchLanguage(selectedLanguage)
+                }
+                "en" -> {
+                    selectedLanguage = "hi"
+                    switchLanguage(selectedLanguage)
+                }
+            }
             switchTheme()
+
         }
+
     }
 
     @SuppressLint("MissingPermission")
@@ -124,6 +144,10 @@ class WeatherFragment : BaseFragment(), EasyPermissions.PermissionCallbacks {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
 
+    }
+
+    fun switchLanguage(selectedLan: String) {
+        activity as MainActivity setLangCode (selectedLan)
     }
 
     private fun showProgress() {

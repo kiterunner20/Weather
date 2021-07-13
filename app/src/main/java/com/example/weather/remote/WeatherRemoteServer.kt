@@ -5,6 +5,7 @@ import com.example.weather.utility.Constants.API_KEY
 import retrofit2.Response
 import javax.inject.Inject
 
+//Class which interacts RemoteService classses
 class WeatherRemoteServer @Inject constructor(private val weatherService: WeatherService) {
 
 

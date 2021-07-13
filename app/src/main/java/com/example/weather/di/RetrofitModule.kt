@@ -16,6 +16,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+/**
+ *Dependency for Retrofit .All these dependenicies has to be singleton, context will
+ * be throughout the app.
+ */
+
+
 @InstallIn(ApplicationComponent::class)
 @Module
 object RetrofitModule {

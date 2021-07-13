@@ -2,6 +2,7 @@ package com.example.weather.data
 
 import com.google.gson.annotations.SerializedName
 
+//data holder POJO
 data class WeatherResponse(
 
 	@field:SerializedName("request")

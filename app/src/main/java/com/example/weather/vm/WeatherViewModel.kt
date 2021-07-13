@@ -20,10 +20,14 @@ constructor(private val repository: WeatherRepository) : ViewModel() {
     private var weatherDataState: MutableLiveData<WeatherDataState> = MutableLiveData()
 
 
+    /**
+     * @WeatherDataState will be observed from the UI
+     */
     fun getWeatherData(): LiveData<WeatherDataState> {
         return weatherDataState
     }
 
+    //Data will be fetched asynchronously.
     fun fetchWeatherData(location: String) {
         showProgress()
         viewModelScope.launch {
