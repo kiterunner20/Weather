@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">मौसम</string>
+    <string name="switch_theme">विषय और भाषा स्विच करें</string>
+    <string name="humidity">नमी</string>
+    <string name="wind">हवा</string>
+</resources>
